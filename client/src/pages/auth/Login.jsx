@@ -29,13 +29,22 @@ const Login = () => {
           res.data.name === "admin" ? "admin" : "user",
         );
         localStorage.setItem("userName", res.data.name);
-        showToast(res?.message || "Something went wrong", res.status);
+        showToast({
+          message: res?.message || "Login successful",
+          type: res.status,
+        });
         setTimeout(() => {
           navigate("/actors");
         }, 1000);
       }
     } catch (err) {
-      showToast(err.response?.data?.message || "Something went wrong", "error");
+      console.log("ERROR:", err);
+      console.log("RESPONSE:", err.response);
+
+      showToast({
+        message: err?.response?.data?.message || "Something went wrong",
+        type: "error",
+      });
     } finally {
       setLoading(false);
     }
