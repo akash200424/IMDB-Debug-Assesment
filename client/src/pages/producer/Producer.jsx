@@ -21,8 +21,10 @@ const Producers = ({ viewState, editState, addState }) => {
   const { producers = [] } = useSelector(selectProducer);
 
   useEffect(() => {
-    fetchProducers();
-  });
+    if (!producers.length) {
+      fetchProducers({ setLoading });
+    }
+  }, [producers.length]);
 
   const filteredProducers = producers.filter((producer) =>
     producer.name?.toLowerCase().includes(filter.name?.toLowerCase() || ""),
