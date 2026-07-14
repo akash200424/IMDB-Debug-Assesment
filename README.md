@@ -1,68 +1,116 @@
-# TECH ASSESSMENT
+# IMDB Clone Technical Assessment
 
-This repository contains both the frontend (React/Vite) and the backend (Node.js/Express) for the IMDB Clone application.
+## Bug Report
 
-## Directory Structure
+## Bug Report
 
-- `client/` - Frontend application
-- `src/` - Backend source code
-- `config/` - Configuration files
-- `database/` - Database seeds, migrations, and SQLite file
-- `logs/` - Application logs
-- `uploads/` - User-uploaded files
+Google Doc: <https://docs.google.com/document/d/14SnAvWoupzz7DjHZY40Uh-JCzN2GUl9B41CtN2hc2jY/edit?usp=sharing>
 
-## Getting Started
+---
 
-### Prerequisites
+# Project Setup
 
-- Node.js (v16+)
+## Prerequisites
+
+- Node.js 22.x
 - npm
 
-### Installation & Running Locally
+## Installation
 
-1. Clone the repository and navigate to the project root.
-2. Copy `.env.example` to `.env` (if applicable) and fill in your variables.
-3. Install root and client dependencies:
-   ```bash
-   npm install
-   cd client && npm install && cd ..
-   ```
-4. Create the local SQLite database file:
-   - **Mac/Linux:**
-     ```bash
-     touch dev.sqlite3
-     ```
-   - **Windows (PowerShell):**
-     ```powershell
-     New-Item dev.sqlite3 -Type File
-     ```
-   *(Or simply create a new empty file named `dev.sqlite3` in the root folder using your code editor).*
-5. Set up the database schema and mock data:
-   ```bash
-   npx knex migrate:latest
-   npm run seed
-   ```
-6. Run both the backend and frontend concurrently:
-   ```bash
-   npm run dev
-   ```
-   The frontend will start at `http://localhost:5173` and the backend at `http://localhost:3000`.
+Clone the repository
 
-## Technical Assessment Instructions
+```bash
+git clone https://github.com/akash200424/IMDB-Debug-Assesment.git
+cd IMDB-Debug-Assesment
+```
 
-This repository contains several intentional bugs for the purpose of a technical debugging interview.
+Install backend dependencies
 
-### Your Task:
+```bash
+npm install
+```
 
-1. Run the application locally and interact with the UI.
-2. Identify the bugs across the frontend, API, and backend/database layers.
-3. Debug and fix the issues you encounter.
+Install frontend dependencies
 
-### Submission Instructions
-To evaluate your debugging skills, please follow these submission guidelines carefully:
+```bash
+cd client
+npm install
+cd ..
+```
 
-1. Create a new repository on your GitHub account and push this codebase to it.
-2. Debug the application and commit your code fixes directly to your new repository.
-3. For every bug you find and fix, document it in a Google Doc using the format provided in the `Candidate_Bug_Report.md` template. Please explain the symptom and your fix in plain English.
-4. Add the link to your Google Doc at the top of your repository's `README.md` (make sure the Google Doc permissions are set to "Anyone with the link can view").
-5. Share the link to your new repository with your recruiter or interviewer to complete the assessment.
+---
+
+# Environment Configuration
+
+Create a `.env` file in the project root.
+
+Example:
+
+```env
+PORT=5000
+JWT_SECRET=your_super_secret_jwt_key_here
+```
+
+---
+
+# Database Setup
+
+Run migrations
+
+```bash
+npx knex migrate:latest
+```
+
+Seed the database
+
+```bash
+npm run seed
+```
+
+---
+
+# Run the application
+
+```bash
+npm run dev
+```
+
+Backend
+
+```
+http://localhost:5000
+```
+
+Frontend
+
+```
+http://localhost:5173
+```
+
+(Vite may automatically choose another available port if 5173 is already in use.)
+
+---
+
+# Assumptions
+
+- SQLite is used as the local development database.
+- Environment variables are provided through a `.env` file.
+- Seed data is loaded using Knex.
+
+---
+
+# Bugs Fixed
+
+- Fixed the incorrect database seed script to use Knex seed execution.
+- Added the missing project dependencies required to run the application.
+- Corrected the backend CORS origin configuration.
+- Fixed login error handling so authentication failures display appropriate feedback.
+- Optimized the Producer page by preventing unnecessary API requests caused by an incorrect React `useEffect` implementation.
+
+---
+
+# Additional Notes
+
+- Database migrations and seed files are included.
+- Bug report is available in the linked Google Document.
+- All fixes were committed incrementally to demonstrate the debugging process.
