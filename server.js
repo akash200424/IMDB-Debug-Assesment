@@ -1,3 +1,4 @@
+require("dotenv").config();
 const app = require("./src/app");
 const { PORT } = require("./config/config.js");
 const db = require("./database/db");
@@ -6,7 +7,8 @@ const port = PORT || 3000;
 
 console.log("Checking database connection and running migrations...");
 
-db.migrate.latest()
+db.migrate
+  .latest()
   .then(() => {
     console.log("Database connected and migrations applied successfully!");
     app.listen(port, () => {

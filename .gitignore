@@ -48,3 +48,13 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Environment
+.env
+
+# Local SQLite databases
+dev.sqlite3
+database/dev.sqlite3
+
+# Uploaded files
+uploads/
+
